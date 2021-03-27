@@ -13,7 +13,7 @@ export class TestInterceptor implements HttpInterceptor {
   constructor() {}
 
   handleError(err: HttpErrorResponse) {
-    err['customMessage'] = 'some wrong with your request';
+    err['customMessage'] = 'something wrong with your request';
     return throwError(err);
   }
 
@@ -27,6 +27,7 @@ export class TestInterceptor implements HttpInterceptor {
         Authorization: token,
       },
     });
-    return next.handle(request).pipe(retry(2), catchError(this.handleError));
+    // retry(2),
+    return next.handle(request).pipe(catchError(this.handleError));
   }
 }
