@@ -124,5 +124,8 @@
       }
     }
   },
-  "defaultProject": "httpInterceptors"
+  "defaultProject": "httpInterceptors",
+  "cli": {
+    "analytics": false
+  }
 }
