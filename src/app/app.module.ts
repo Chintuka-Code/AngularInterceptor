@@ -8,9 +8,10 @@ import { TestInterceptor } from './interceptor/test.interceptor';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { Test2Component } from './component/test2/test2.component';
+import { FormTestComponent } from './component/form-test/form-test.component';
 
 @NgModule({
-  declarations: [AppComponent, TestComponent, Test2Component],
+  declarations: [AppComponent, TestComponent, Test2Component, FormTestComponent],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: TestInterceptor, multi: true },

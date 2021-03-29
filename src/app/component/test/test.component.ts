@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { forkJoin, zip } from 'rxjs';
 import { take } from 'rxjs/operators';
 import { TestService } from '../../service/test.service';
+import { SharedServiceService } from '../../service/shared-service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-test',
@@ -9,7 +11,11 @@ import { TestService } from '../../service/test.service';
   styleUrls: ['./test.component.scss'],
 })
 export class TestComponent implements OnInit {
-  constructor(private test_service_obj: TestService) {}
+  constructor(
+    private test_service_obj: TestService,
+    private shared_ser: SharedServiceService,
+    private router: Router
+  ) {}
   message: string;
 
   test() {
@@ -37,6 +43,13 @@ export class TestComponent implements OnInit {
         this.message = error.message;
       }
     );
+  }
+
+  setUser() {
+    this.shared_ser.changeMessage({ name: 'sabban' });
+    setTimeout(() => {
+      this.router.navigate(['/test2']);
+    }, 2000);
   }
 
   ngOnInit(): void {}
