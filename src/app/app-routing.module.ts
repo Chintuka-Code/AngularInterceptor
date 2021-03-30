@@ -4,8 +4,6 @@ import { TestComponent } from './component/test/test.component';
 import { Test2Component } from './component/test2/test2.component';
 import { FormTestComponent } from './component/form-test/form-test.component';
 
-import { LoginGuard } from './gaurd/login.guard';
-
 const routes: Routes = [
   {
     path: 'test',
@@ -13,7 +11,6 @@ const routes: Routes = [
     data: {
       role: 'admin',
     },
-    canActivate: [LoginGuard],
   },
   {
     path: 'test2',
@@ -21,7 +18,6 @@ const routes: Routes = [
     data: {
       role: 'test',
     },
-    canActivate: [LoginGuard],
   },
   {
     path: 'formTest',

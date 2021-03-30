@@ -1,1 +1,14 @@
-<p>form-test works!</p>
+<form [formGroup]="user" (submit)="getValue()">
+  <input formControlName="name" />
+
+  <ng-container formArrayName="skills">
+    <div *ngFor="let _ of skills.controls; index as i">
+      <input [formControlName]="i" />
+      <div class="control">
+        <button type="button" (click)="addFeild()">Plus</button>
+        <button type="button" (click)="remove(i)">Minus</button>
+      </div>
+    </div>
+  </ng-container>
+  <input type="submit" value="submit" [disabled]="user.invalid" />
+</form>
